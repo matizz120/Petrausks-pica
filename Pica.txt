@@ -1,0 +1,3 @@
+Picas lielums: 30
+Picas piedevas: 30
+Picas cena: 30

@@ -44,6 +44,29 @@ public class picerija {
 		return pica;
 	}
 	
+	public static int saglabat(int pica){
+		int lielums = pica;
+		JOptionPane.showMessageDialog(null, lielums);
+		try {
+			FileWriter fw = new FileWriter("Pica.txt");
+			PrintWriter raksta = new PrintWriter(fw);
+		if(lielums==30 || lielums==40 || lielums==50) {
+				raksta.println("Picas lielums: "+lielums);
+				raksta.println("Picas piedevas: "+lielums);
+				raksta.println("Picas cena: "+lielums);
+				JOptionPane.showMessageDialog(null, "Ierakstîts failâ!");
+				raksta.close();
+		}else{
+			JOptionPane.showMessageDialog(null, "Tâds lielums nepastâv! (30, 40, 50 cm!)");
+		}
+		}
+		catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Kïûme ierakstot faila!", "Kïûme!", JOptionPane.ERROR_MESSAGE);
+		}
+		return pica;
+		
+		}
+	
 	public static void main(String[] args) {
 		String izvele;
 		int pica = 0;
@@ -52,7 +75,7 @@ public class picerija {
 			izvele = JOptionPane.showInputDialog("pica - Izveidot picas garumu \npildcena - Pildît picu ar piedavâm/nosaukt cenu \npersona - Reìistrçt personu \nsaglabat - Reìistrçt picu \niziet - Beigt pasûtîjumu");	
 			switch(izvele) {
 			case "pica":
-				izveidot(pica);
+				pica = izveidot(pica);
 			break;
 			
 			case "pildcena":
