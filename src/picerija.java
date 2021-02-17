@@ -16,6 +16,11 @@ public class picerija {
 		return pica;
 	}
 	
+	public static int pilditcena(int pica){
+		return pica;
+		
+	}
+	
 	public static void main(String[] args) {
 		String izvele;
 		int pica = 0;
