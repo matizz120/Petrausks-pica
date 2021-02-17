@@ -38,7 +38,7 @@ public class picerija {
 			piedeva = 0;
 		}
 		piedevacena = piedeva;
-		JOptionPane.showMessageDialog(null, "Piedevu kopçjâ cena: "+piedevacena);
+		JOptionPane.showMessageDialog(null, "Piedevu kopçjâ cena: "+piedevacena+ " EUR");
 		
 		return piedevacena;
 		
