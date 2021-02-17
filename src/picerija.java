@@ -20,24 +20,25 @@ public class picerija {
 	}
 	
 	public static double pilditcena(double piedevacena) {
-		double piedeva;
-		String Pepperoni = JOptionPane.showInputDialog("Visas piedevas ir 0.75 EUR, picas nâk kopâ ar sieru,\nVçlaties Pepperoni? (Y/N)  ");
-		String Senes = JOptionPane.showInputDialog("Vçlaties Sçnes? (Y/N)  ");
-		String Sipoli = JOptionPane.showInputDialog("Vçlaties Sîpolus? (Y/N)  ");
-		String Shkinkis = JOptionPane.showInputDialog("Vçlaties Ðíiòíi? (Y/N)  ");
+		double piedeva = 0;
+		int Pepperoni = Integer.parseInt(JOptionPane.showInputDialog("Visas piedevas ir 0.75 EUR, picas nâk kopâ ar sieru,\nVçlaties Pepperoni? (1/0)  "));
+		int Senes = Integer.parseInt(JOptionPane.showInputDialog("Vçlaties Sçnes? (1/0)  "));
+		int Sipoli = Integer.parseInt(JOptionPane.showInputDialog("Vçlaties Sîpolus? (1/0)  "));
+		int Shkinkis = Integer.parseInt(JOptionPane.showInputDialog("Vçlaties Ðíiòíi? (1/0)  "));
 		
-		if(Pepperoni == "Y" && Senes == "Y" && Sipoli == "Y" && Shkinkis == "Y") {
+		if(Pepperoni == 1 && Senes == 1 && Sipoli == 1 && Shkinkis == 1) {
 			piedeva = 3;
-		}else if(Senes == "Y" && Sipoli == "Y" && Shkinkis == "Y" || Pepperoni == "Y" && Senes == "Y" && Sipoli == "Y" || Sipoli == "Y" && Shkinkis == "Y" && Pepperoni == "Y" ) {
+		}else if(Senes == 1 && Sipoli == 1 && Shkinkis == 1 || Pepperoni == 1 && Senes == 1 && Sipoli == 1 || Sipoli == 1 && Shkinkis == 1 && Pepperoni == 1 ) {
 			piedeva = 2.25;
-		}else if(Senes == "Y" && Sipoli == "Y" || Senes == "Y" && Pepperoni == "Y" || Senes == "Y" && Shkinkis == "Y" || Shkinkis == "Y" && Sipoli == "Y" || Shkinkis == "Y" && Pepperoni == "Y" || Pepperoni == "Y" && Sipoli == "Y") {
+		}else if(Senes == 1 && Sipoli == 1 || Senes == 1 && Pepperoni == 1 || Senes == 1 && Shkinkis == 1 || Shkinkis == 1 && Sipoli == 1 || Shkinkis == 1 && Pepperoni == 1 || Pepperoni == 1 && Sipoli == 1) {
 			piedeva = 1.5;
-		}else if(Pepperoni == "Y" || Senes == "Y" || Sipoli == "Y" || Shkinkis == "Y") {
+		}else if(Pepperoni == 1 || Senes == 1 || Sipoli == 1 || Shkinkis == 1) {
 			piedeva = 0.75;
-		}else {
+		}else if(Pepperoni == 0 && Senes == 0 && Sipoli == 0 && Shkinkis == 0){
 			piedeva = 0;
 		}
 		piedevacena = piedeva;
+		JOptionPane.showMessageDialog(null, "Piedevu kopçjâ cena: "+piedevacena);
 		
 		return piedevacena;
 		
@@ -80,7 +81,17 @@ public class picerija {
 			}
 		if(lielums==30 || lielums==40 || lielums==50) {
 				raksta.println("Picas lielums: "+lielums+ " cm");
-				raksta.println("Picas piedevas: "+lielums);
+				if(piedevacena == 3) {
+					raksta.println("Picas piedevas: Ðíiòíis, Sîpoli, Pepperoni un Sçnes");
+				}else if(piedevacena == 2.25) {
+					raksta.println("Picas piedevas: Ðíiòíis, Sîpoli un Pepperoni / Ðíiòíis, Sçnes un Pepperoni / Sîpoli, Sçnes un Pepperoni / Sîpoli, Sçnes un Ðíiòíis");
+				}else if(piedevacena == 1.5) {
+					raksta.println("Picas piedevas: Ðíiòíis un Sîpoli / Pepperoni un Sçnes / Ðíiòíis un Sçnes / Ðíiòíis un Pepperoni / Pepperoni un Sîpoli / Sçnes un Sîpoli");
+				}else if(piedevacena == 0.75) {
+					raksta.println("Picas piedevas: Ðíiòíis/Sîpoli/Pepperoni/Sçnes");
+				}else if(piedevacena == 0) {
+					raksta.println("Picas piedevas: Nav");
+				}
 				raksta.println("Picas cena: "+(picascena+piedeva)+ " EUR");
 				JOptionPane.showMessageDialog(null, "Jûsu pica ir veiksmîgi saglabâta failâ!");
 				raksta.close();
