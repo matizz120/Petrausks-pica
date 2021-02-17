@@ -1,3 +1,6 @@
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 import javax.swing.JOptionPane;
 
 public class picerija {
@@ -19,6 +22,26 @@ public class picerija {
 	public static int pilditcena(int pica){
 		return pica;
 		
+	}
+	
+	public static int registret(int pica){
+			try {
+				String personasVards = JOptionPane.showInputDialog("Ievadiet jûsu vârdu: ");
+				String personasAdrese = JOptionPane.showInputDialog("Ievadiet jûsu adresi: ");
+				int personasTalrunis = Integer.parseInt(JOptionPane.showInputDialog("Ievadiet jûsu tâlruni: "));
+				FileWriter fileWriter = new FileWriter("Persona.txt");
+				PrintWriter raksta = new PrintWriter(fileWriter);
+					raksta.println("Pircçja vârds - "+personasVards);
+					raksta.println("Pircçja adrese - "+personasAdrese);
+					raksta.println("Pircçja tâlrunis - "+personasTalrunis);
+				
+				JOptionPane.showMessageDialog(null, "Persona ir veiksmîgi saglabâta!");
+				raksta.close();	
+			}
+		catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Kïûme ierakstot faila!", "Kïûme!", JOptionPane.ERROR_MESSAGE);
+		}
+		return pica;
 	}
 	
 	public static void main(String[] args) {
