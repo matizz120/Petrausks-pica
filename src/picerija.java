@@ -19,8 +19,27 @@ public class picerija {
 		return pica;
 	}
 	
-	public static int pilditcena(int pica){
-		return pica;
+	public static double pilditcena(double piedevacena) {
+		double piedeva;
+		String Pepperoni = JOptionPane.showInputDialog("Visas piedevas ir 0.75 EUR, picas nâk kopâ ar sieru,\nVçlaties Pepperoni? (Y/N)  ");
+		String Senes = JOptionPane.showInputDialog("Vçlaties Sçnes? (Y/N)  ");
+		String Sipoli = JOptionPane.showInputDialog("Vçlaties Sîpolus? (Y/N)  ");
+		String Shkinkis = JOptionPane.showInputDialog("Vçlaties Ðíiòíi? (Y/N)  ");
+		
+		if(Pepperoni == "Y" && Senes == "Y" && Sipoli == "Y" && Shkinkis == "Y") {
+			piedeva = 3;
+		}else if(Senes == "Y" && Sipoli == "Y" && Shkinkis == "Y" || Pepperoni == "Y" && Senes == "Y" && Sipoli == "Y" || Sipoli == "Y" && Shkinkis == "Y" && Pepperoni == "Y" ) {
+			piedeva = 2.25;
+		}else if(Senes == "Y" && Sipoli == "Y" || Senes == "Y" && Pepperoni == "Y" || Senes == "Y" && Shkinkis == "Y" || Shkinkis == "Y" && Sipoli == "Y" || Shkinkis == "Y" && Pepperoni == "Y" || Pepperoni == "Y" && Sipoli == "Y") {
+			piedeva = 1.5;
+		}else if(Pepperoni == "Y" || Senes == "Y" || Sipoli == "Y" || Shkinkis == "Y") {
+			piedeva = 0.75;
+		}else {
+			piedeva = 0;
+		}
+		piedevacena = piedeva;
+		
+		return piedevacena;
 		
 	}
 	
@@ -44,17 +63,26 @@ public class picerija {
 		return pica;
 	}
 	
-	public static int saglabat(int pica){
+	public static int saglabat(int pica, double piedevacena){
 		int lielums = pica;
-		JOptionPane.showMessageDialog(null, lielums);
+		double piedeva = piedevacena;
+		double picascena = 0;
+		JOptionPane.showMessageDialog(null, piedevacena);
 		try {
 			FileWriter fw = new FileWriter("Pica.txt");
 			PrintWriter raksta = new PrintWriter(fw);
+			if(lielums == 30) {
+				picascena = 5;
+			}else if(lielums == 40) {
+				picascena = 7.5;
+			}else if(lielums == 50) {
+				picascena = 10;
+			}
 		if(lielums==30 || lielums==40 || lielums==50) {
-				raksta.println("Picas lielums: "+lielums);
+				raksta.println("Picas lielums: "+lielums+ " cm");
 				raksta.println("Picas piedevas: "+lielums);
-				raksta.println("Picas cena: "+lielums);
-				JOptionPane.showMessageDialog(null, "Ierakstîts failâ!");
+				raksta.println("Picas cena: "+(picascena+piedeva)+ " EUR");
+				JOptionPane.showMessageDialog(null, "Jûsu pica ir veiksmîgi saglabâta failâ!");
 				raksta.close();
 		}else{
 			JOptionPane.showMessageDialog(null, "Tâds lielums nepastâv! (30, 40, 50 cm!)");
@@ -70,6 +98,7 @@ public class picerija {
 	public static void main(String[] args) {
 		String izvele;
 		int pica = 0;
+		double piedevacena = 0;
 		
 		do {
 			izvele = JOptionPane.showInputDialog("pica - Izveidot picas garumu \npildcena - Pildît picu ar piedavâm/nosaukt cenu \npersona - Reìistrçt personu \nsaglabat - Reìistrçt picu \niziet - Beigt pasûtîjumu");	
@@ -79,7 +108,7 @@ public class picerija {
 			break;
 			
 			case "pildcena":
-				pilditcena(pica);
+				piedevacena = pilditcena(piedevacena);
 			break;
 			
 			case "persona":
@@ -87,7 +116,7 @@ public class picerija {
 			break;
 			
 			case "saglabat":
-				saglabat(pica);
+				saglabat(pica, piedevacena);
 			break;
 			
 			case "iziet":
