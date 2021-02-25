@@ -14,4 +14,4 @@
 ## Apraksts , kas tika izdarits
 - [x] Picerijas apraksta sastadishana
 - [x] Picerijas izgrushana uz GitHub
-- [ ] 
+- [x] Projektu pabeigshana
