@@ -55,7 +55,7 @@ public class picerija {
 					raksta.println("Pircçja adrese - "+personasAdrese);
 					raksta.println("Pircçja tâlrunis - "+personasTalrunis);
 				
-				JOptionPane.showMessageDialog(null, "Persona ir veiksmîgi saglabâta!");
+				JOptionPane.showMessageDialog(null, "Persona ir veiksmîgi saglabâta! ");
 				raksta.close();	
 			}
 		catch(Exception e) {
