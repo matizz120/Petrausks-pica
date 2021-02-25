@@ -68,7 +68,6 @@ public class picerija {
 		int lielums = pica;
 		double piedeva = piedevacena;
 		double picascena = 0;
-		JOptionPane.showMessageDialog(null, piedevacena);
 		try {
 			FileWriter fw = new FileWriter("Pica.txt");
 			PrintWriter raksta = new PrintWriter(fw);
